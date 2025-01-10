@@ -10,7 +10,7 @@ if play[0]=="y":
         bet = input("How much would you like to bet?: ")
         if bet.isdigit():
             bet = int(bet)
-            color = input("Choose red or black: ")
+            color = input("Choose red, black, or green: ")
             color = color.lower()
             wheelResult = random.randint(1,38)
             if bet<=bal:
@@ -30,8 +30,12 @@ if play[0]=="y":
                             print("It landed on black, you lose")
                             bal -= bet
                     else:
-                        print("It landed on green, you lose")
-                        bal -= bet
+                        if color[0]=="g":
+                            print("It landed on green, you win!")
+                            bal += 17*bet
+                        else:
+                            print("It landed on green, you lose")
+                            bal -= bet
                 if color[0]=="q":
                     keepGoing = False
                 if bal==0:
